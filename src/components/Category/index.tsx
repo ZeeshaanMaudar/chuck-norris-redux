@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import RandomJoke from '../RandomJoke';
+import RandomJoke from '../RandomJoke';
 
 import ArrowRightIcon from '../../assets/arrow-right.svg';
 import ArrowDownIcon from '../../assets/arrow-down.svg';
@@ -54,10 +54,13 @@ const callIcons = ({ isOpen, category, categoryChosen, handleClick }: CallIconsA
 }
 
 const callRandomJoke = ({ isOpen, category, categoryChosen }: CallRandomJokeArgs) => {
+
   if (isOpen && category === categoryChosen) {
-    // return <RandomJoke />
-    return <div>Random Joke</div>
+
+    return <RandomJoke />
+
   }
+
 }
 
 const Category: React.FC<Props> = ({ category, handleClick, isOpen, categoryChosen, color }) => {
