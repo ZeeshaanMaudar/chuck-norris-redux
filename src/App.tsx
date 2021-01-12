@@ -1,11 +1,10 @@
 import React from 'react';
 
-const App = () => {
-  return (
-    <div>
-      Chuck Norris App with Redux
-    </div>
-  );
+import HomeView from './views/HomeView';
+
+const App: React.FC = () => {
+
+  return <HomeView />;
 }
 
 export default App;
