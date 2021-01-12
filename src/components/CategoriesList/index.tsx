@@ -19,12 +19,13 @@ import {
 
 interface CategoriesArgs {
   categoriesArray: string[],
-  handleClick: (category: string) => void,
+  openAccordion: (category: string) => void,
   isOpen: boolean,
-  categoryChosen: string
+  categoryChosen: string,
+  refreshRandomJoke: (event: any, category: string) => void
 }
 
-const callCategories = ({ categoriesArray, handleClick, isOpen, categoryChosen }: CategoriesArgs) => {
+const callCategories = ({ categoriesArray, openAccordion, isOpen, categoryChosen, refreshRandomJoke }: CategoriesArgs) => {
 
   if(categoriesArray.length > 0) {
 
@@ -32,7 +33,7 @@ const callCategories = ({ categoriesArray, handleClick, isOpen, categoryChosen }
 
       let color = colorsArray[index];
 
-      return <Category key={category} {...{ category, handleClick, isOpen, categoryChosen, color  }} />;
+      return <Category key={category} {...{ category, openAccordion, isOpen, categoryChosen, color, refreshRandomJoke  }} />;
 
     })
   }
@@ -66,7 +67,7 @@ const CategoriesList: React.FC = () => {
     return <Spinner />
   }
 
-  const handleClick = (category: string) => {
+  const openAccordion = (category: string) => {
 
     if (categoryChosen && categoryChosen !== category) {
       setIsOpen(false);
@@ -77,14 +78,22 @@ const CategoriesList: React.FC = () => {
     setCategoryChosen(category);
 
     dispatch(fetchRandomJokeStartAsync(category));
-    
+
+  }
+
+  const refreshRandomJoke = (event: any, category: string) => {
+
+    event.stopPropagation();
+
+    dispatch(fetchRandomJokeStartAsync(category));
+
   }
 
   return (
     <Wrapper>
       <Title>Categories</Title>
       <div>
-        {callCategories({ categoriesArray, handleClick, isOpen, categoryChosen })}
+        {callCategories({ categoriesArray, openAccordion, isOpen, categoryChosen, refreshRandomJoke })}
       </div>
     </Wrapper>
   );
