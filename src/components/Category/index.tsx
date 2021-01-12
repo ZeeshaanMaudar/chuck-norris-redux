@@ -15,10 +15,11 @@ import {
 
 interface Props {
   category: string,
-  handleClick: (category: string) => void,
+  openAccordion: (category: string) => void,
   isOpen: boolean,
   categoryChosen: string,
-  color: string
+  color: string,
+  refreshRandomJoke: (event: any, category: string) => void,
 }
 
 interface CallRandomJokeArgs {
@@ -31,10 +32,10 @@ interface CallIconsArgs {
   isOpen: boolean,
   category: string,
   categoryChosen: string,
-  handleClick: (category: string) => void
+  refreshRandomJoke: (event: any, category: string) => void
 }
 
-const callIcons = ({ isOpen, category, categoryChosen, handleClick }: CallIconsArgs) => {
+const callIcons = ({ isOpen, category, categoryChosen, refreshRandomJoke }: CallIconsArgs) => {
 
   if (isOpen && category === categoryChosen) {
     return (
@@ -42,7 +43,7 @@ const callIcons = ({ isOpen, category, categoryChosen, handleClick }: CallIconsA
         <img
           src={RefreshIcon}
           alt='refresh icon'
-          onClick={() => handleClick(category)}
+          onClick={event => refreshRandomJoke(event, category)}
         />
         <img src={ArrowDownIcon} alt='arrow down icon' />
       </IconContainer>
@@ -63,13 +64,13 @@ const callRandomJoke = ({ isOpen, category, categoryChosen }: CallRandomJokeArgs
 
 }
 
-const Category: React.FC<Props> = ({ category, handleClick, isOpen, categoryChosen, color }) => {
+const Category: React.FC<Props> = ({ category, openAccordion, isOpen, categoryChosen, color, refreshRandomJoke }) => {
 
   return (
-    <Wrapper onClick={() => handleClick(category)} {...{ color }}>
+    <Wrapper onClick={() => openAccordion(category)} {...{ color }}>
       <CategoryContainer>
         <Title>{category}</Title>
-        {callIcons({ isOpen, category, categoryChosen, handleClick })}
+        {callIcons({ isOpen, category, categoryChosen, refreshRandomJoke })}
       </CategoryContainer>
       {callRandomJoke({ isOpen, category, categoryChosen })}
   </Wrapper>
