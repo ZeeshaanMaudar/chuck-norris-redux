@@ -22,7 +22,7 @@ interface CategoriesArgs {
   openAccordion: (category: string) => void,
   isOpen: boolean,
   categoryChosen: string,
-  refreshRandomJoke: (event: any, category: string) => void
+  refreshRandomJoke: (event: any, category: string) => void,
 }
 
 const callCategories = ({ categoriesArray, openAccordion, isOpen, categoryChosen, refreshRandomJoke }: CategoriesArgs) => {
