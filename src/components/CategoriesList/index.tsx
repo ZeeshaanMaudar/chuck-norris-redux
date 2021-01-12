@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategoriesStartAsync } from '../../redux/getCategories/getCategoriesActions';
 import { selectIsFetchingCategories, selectCategoriesList, selectErrorFetchingCategories } from '../../redux/getCategories/getCategoriesSelectors';
 
+import { fetchRandomJokeStartAsync } from '../../redux/getRandomJoke/getRandomJokeActions';
 
-// import Category from '../Category';
+
+import Category from '../Category';
 
 import colorsArray from '../../utils/colorsArray';
 
@@ -30,8 +32,8 @@ const callCategories = ({ categoriesArray, handleClick, isOpen, categoryChosen }
 
       let color = colorsArray[index];
 
-      // return <Category key={category} {...{ category, handleClick, isOpen, categoryChosen, color  }} />;
-      return <div key={category}>{category}</div>
+      return <Category key={category} {...{ category, handleClick, isOpen, categoryChosen, color  }} />;
+
     })
   }
 
@@ -73,6 +75,9 @@ const CategoriesList: React.FC = () => {
     
     setIsOpen(prevOpen => !prevOpen);
     setCategoryChosen(category);
+
+    dispatch(fetchRandomJokeStartAsync(category));
+    
   }
 
   return (
