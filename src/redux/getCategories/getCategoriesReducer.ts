@@ -3,7 +3,7 @@ import * as actionTypes from './getCategoriesActionTypes';
 const initialState = {
   isFetchingCategories: false,
   categories: [],
-  error: null
+  error: ''
 };
 
 const categoriesReducer = (state = initialState, action: any) => {

@@ -4,7 +4,7 @@ interface State {
   categories: {
     isFetchingCategories: boolean,
     categories: string[],
-    error: string | null
+    error: string
   }
 }
 
