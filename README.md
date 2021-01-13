@@ -2,6 +2,13 @@
 
 This Single Page Application displays a list of categories in an accordion format. Upon clicking a category, a request is made to fetch a random Chuck Norris joke in that category.
 
+## Technologies
+
+This project makes uses:
+  - create-react-app
+  - Redux
+  - Typescript
+  - Styled Components
 ## How to start the project
 
  - clone this project
@@ -26,6 +33,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+## CodeSandbox
+You can find codesandbox version at [https://codesandbox.io/s/github/ZeeshaanMaudar/chuck-norris-redux](https://codesandbox.io/s/github/ZeeshaanMaudar/chuck-norris-redux)
 ## Note
 
 This is a version of the same Chuck Norris app using Redux.
